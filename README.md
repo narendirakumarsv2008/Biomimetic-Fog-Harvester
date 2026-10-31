@@ -1,9 +1,13 @@
 # Nature-Inspired Fog Harvesting Prototype using ESP32 🪲💧
 A functional hardware prototype replicating the moisture-harvesting capabilities of the Namib Desert *Stenocara* beetle, built for my Semester 1 "Nature Inspired Engineering" course. 
 
-![Prototype Photo](Image1.jpg)(Image2.jpg)
+![Prototype Photo](Image1.jpg)
 
-**[Watch the working prototype and data logging video here](LINK_TO_YOUR_LINKEDIN_OR_YOUTUBE_VIDEO)**
+**[Watch the working prototype and data logging video here](https://youtu.be/Q1aBB1ZBOv0)**
+
+## Surface Coating Close-Up 
+![Surface Drops](Image2.jpg)
+*Droplets nucleating on the hydrophilic PVA bumps and preparing to roll down the hydrophobic wax channels.*
 
 ## Tech Stack (ECE Integration)
 *   **Microcontroller:** ESP32 (C++)
