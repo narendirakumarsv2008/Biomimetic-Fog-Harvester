@@ -12,8 +12,8 @@ A functional hardware prototype replicating the moisture-harvesting capabilities
 ## Tech Stack (ECE Integration)
 *   **Microcontroller:** ESP32 (C++)
 *   **Sensors:** DHT22 (Temperature/Humidity), Analog Water-Level Sensor
-*   **Modules:** 0.96" I2C OLED Display, SPI MicroSD Card Module
-*   **Core Concepts:** Biomimicry (Hydrophilic/Hydrophobic coatings), Analog-to-Digital Conversion (ADC), I2C & SPI Communication, Local Data Logging.
+*   **Modules:** 0.96" I2C OLED Display
+*   **Core Concepts:** Biomimicry (Hydrophilic/Hydrophobic coatings), Analog-to-Digital Conversion (ADC).
 
 ## Circuit Diagram
 ![Circuit Diagram](CircuitDiagram.jpg)
