@@ -2,13 +2,10 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include "DHT.h"
-
-// --- Pin Definitions ---
 #define DHTPIN 4
 #define WATER_SENSOR_PIN 34
 #define FAN_PIN 26
 
-// --- Object Initialization ---
 #define DHTTYPE DHT22
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -17,26 +14,26 @@ DHT dht(DHTPIN, DHTTYPE);
 #define OLED_RESET -1
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-// --- Variables for Timing and Display ---
+
 unsigned long previousOledMillis = 0;
-const long oledInterval = 2000; // Refresh display every 2 seconds
+const long oledInterval = 2000;
 
 float totalCollectedML = 0.0;
 float previousWaterLevelRaw = 0;
-// Calibration factor: Adjust this after testing actual volumes in your jar
+
 const float ADC_TO_ML_FACTOR = 0.05; 
 
 void setup() {
   Serial.begin(115200);
 
-  // Initialize Fan Pin
+  
   pinMode(FAN_PIN, OUTPUT);
-  digitalWrite(FAN_PIN, HIGH); // Turn on optional fan
+  digitalWrite(FAN_PIN, HIGH); 
 
-  // Initialize DHT
+  
   dht.begin();
 
-  // Initialize OLED
+  
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));
     for(;;);
@@ -53,7 +50,7 @@ void setup() {
 void loop() {
   unsigned long currentMillis = millis();
 
-  // --- Display Update (Every 2 seconds) ---
+  
   if (currentMillis - previousOledMillis >= oledInterval) {
     previousOledMillis = currentMillis;
 
@@ -61,9 +58,9 @@ void loop() {
     float h = dht.readHumidity();
     int wLevelRaw = analogRead(WATER_SENSOR_PIN);
 
-    // Calculate water added for local tracking
+    
     float waterAddedRaw = wLevelRaw - previousWaterLevelRaw;
-    if (waterAddedRaw < 0) waterAddedRaw = 0; // Prevent negative additions if sensor fluctuates
+    if (waterAddedRaw < 0) waterAddedRaw = 0; 
     
     float waterAddedML = waterAddedRaw * ADC_TO_ML_FACTOR;
     totalCollectedML += waterAddedML;
@@ -89,7 +86,7 @@ void loop() {
     
     display.display();
     
-    // Optional Serial Monitor Debugging
+    
     Serial.print("Temp: "); Serial.print(t);
     Serial.print("C | Hum: "); Serial.print(h);
     Serial.print("% | Water Raw: "); Serial.print(wLevelRaw);
